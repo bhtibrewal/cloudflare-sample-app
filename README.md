@@ -1,10 +1,10 @@
 # Cloudflare worker example app
 
-awwbot is an example app that brings the cuteness of `r/aww` straight to your Discord server, hosted on Cloudflare workers. Cloudflare Workers are a convenient way to host Discord bots due to the free tier, simple development model, and automatically managed environment (no VMs!).
+hello-bot is an example app that brings the cuteness of `r/aww` straight to your Discord server, hosted on Cloudflare workers. Cloudflare Workers are a convenient way to host Discord bots due to the free tier, simple development model, and automatically managed environment (no VMs!).
 
-The tutorial for building awwbot is [in the developer documentation](https://discord.com/developers/docs/tutorials/hosting-on-cloudflare-workers)
+The tutorial for building hello-bot is [in the developer documentation](https://discord.com/developers/docs/tutorials/hosting-on-cloudflare-workers)
 
-![awwbot in action](https://user-images.githubusercontent.com/534619/157503404-a6c79d1b-f0d0-40c2-93cb-164f9df7c138.gif)
+![hello-bot in action](https://user-images.githubusercontent.com/534619/157503404-a6c79d1b-f0d0-40c2-93cb-164f9df7c138.gif)
 
 ## Resources used
 
@@ -40,6 +40,7 @@ Below is a basic overview of the project structure:
 ## Configuring project
 
 Before starting, you'll need a [Discord app](https://discord.com/developers/applications) with the following permissions:
+
 - `bot` with the `Send Messages` and `Use Slash Command` permissions
 - `applications.commands` scope
 
@@ -48,6 +49,7 @@ Before starting, you'll need a [Discord app](https://discord.com/developers/appl
 ## Creating your Cloudflare worker
 
 Next, you'll need to create a Cloudflare Workers
+
 - Visit the [Cloudflare dashboard](https://dash.cloudflare.com/)
 - Click on the `Workers` tab, and create a new service using the same name as your Discord bot
 - Make sure to [install the Wrangler CLI](https://developers.cloudflare.com/workers/cli-wrangler/install-update/) and set it up.
@@ -70,11 +72,13 @@ $ wrangler secret put DISCORD_TEST_GUILD_ID
 > :bangbang: This depends on the beta version of the `wrangler` package, which better supports ESM on Cloudflare Workers.
 
 First clone the project:
+
 ```
 git clone https://github.com/discord/cloudflare-sample-app.git
 ```
 
 Then navigate to its directory and install dependencies:
+
 ```
 cd cloudflare-sample-app
 npm install

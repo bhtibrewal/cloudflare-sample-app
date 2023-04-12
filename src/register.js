@@ -1,5 +1,7 @@
-import { AWW_COMMAND, INVITE_COMMAND } from './commands.js';
+import { AWW_COMMAND, HELLO_COMMAND, INVITE_COMMAND } from './commands.js';
 import fetch from 'node-fetch';
+import { config } from 'dotenv';
+config();
 
 /**
  * This file is meant to be run from the command line, and is not used by the
@@ -12,6 +14,8 @@ import fetch from 'node-fetch';
 const token = process.env.DISCORD_TOKEN;
 const applicationId = process.env.DISCORD_APPLICATION_ID;
 const testGuildId = process.env.DISCORD_TEST_GUILD_ID;
+
+// console.log(process.env);
 
 if (!token) {
   throw new Error('The DISCORD_TOKEN environment variable is required.');
@@ -64,7 +68,7 @@ async function registerCommands(url) {
       Authorization: `Bot ${token}`,
     },
     method: 'PUT',
-    body: JSON.stringify([AWW_COMMAND, INVITE_COMMAND]),
+    body: JSON.stringify([AWW_COMMAND, INVITE_COMMAND, HELLO_COMMAND]),
   });
 
   if (response.ok) {

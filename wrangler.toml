@@ -1,9 +1,9 @@
-name = "awwbot"
+name = "hello-bot"
 main = "./src/server.js"
 type = "javascript"
 compatibility_date="2022-02-26"
 
-account_id = "c21e5aacc2d33c52c2b6589adbe56dc0"
+account_id = "9723b4321ea7dab17609ff8164d8f4ee"
 workers_dev = true
 
 [[rules]]

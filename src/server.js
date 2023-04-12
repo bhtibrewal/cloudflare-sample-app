@@ -8,7 +8,7 @@ import {
   InteractionType,
   verifyKey,
 } from 'discord-interactions';
-import { AWW_COMMAND, INVITE_COMMAND } from './commands.js';
+import { AWW_COMMAND, HELLO_COMMAND, INVITE_COMMAND } from './commands.js';
 import { getCuteUrl } from './reddit.js';
 
 class JsonResponse extends Response {
@@ -29,6 +29,7 @@ const router = Router();
  * A simple :wave: hello page to verify the worker is working.
  */
 router.get('/', (request, env) => {
+  console.log(env);
   return new Response(`👋 ${env.DISCORD_APPLICATION_ID}`);
 });
 
@@ -52,6 +53,14 @@ router.post('/', async (request, env) => {
   if (message.type === InteractionType.APPLICATION_COMMAND) {
     // Most user commands will come as `APPLICATION_COMMAND`.
     switch (message.data.name.toLowerCase()) {
+      case HELLO_COMMAND: {
+        return new JSONResponse({
+          type: InteractionResponseType.CHANNEL_MESSAGE_WITH_SOURCE,
+          data: {
+            content: `Hello <@${userId}>`,
+          },
+        });
+      }
       case AWW_COMMAND.name.toLowerCase(): {
         console.log('handling cute request');
         const cuteUrl = await getCuteUrl();
